@@ -2,20 +2,21 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-    const [tasks, setTasks] = useState(() => {
+  const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem("tasks");
 
-      if (savedTasks) {
-          return JSON.parse(savedTasks);
-      }
+    if (savedTasks) {
+        return JSON.parse(savedTasks);
+    }
 
-      return [];
-    });
-    const [taskInput, setTaskInput] = useState("");
+    return [];
+  });
 
-    useEffect(() => {
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-    }, [tasks]);
+  const [taskInput, setTaskInput] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -30,7 +31,7 @@ function App() {
             completed: false
         };
 
-        setTasks([...tasks, newTask]);
+        setTasks((prevTasks) => [...prevTasks, newTask]);
         setTaskInput("");
     }
 
