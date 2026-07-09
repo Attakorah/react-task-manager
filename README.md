@@ -4,6 +4,10 @@ A modern task manager application built with React and Vite.
 
 This project is part of my journey toward becoming a Full-Stack AI Developer. It helped me practice React state management, forms, events, conditional rendering, local storage, and filtering.
 
+## Live Demo
+
+https://attakorah.github.io/react-task-manager/
+
 ## Features
 
 - Add new tasks
