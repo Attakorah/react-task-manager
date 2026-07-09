@@ -204,6 +204,22 @@ h1 {
     background: rgba(56, 189, 248, 0.12);
 }
 
+.clear-btn {
+    width: 100%;
+    margin-bottom: 18px;
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    border-radius: 12px;
+    padding: 10px 14px;
+    background: rgba(239, 68, 68, 0.12);
+    color: #ef4444;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.clear-btn:hover {
+    background: rgba(239, 68, 68, 0.22);
+}
+
 @media (max-width: 600px) {
     .task-item {
         flex-direction: column;

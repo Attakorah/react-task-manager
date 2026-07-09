@@ -69,6 +69,11 @@ function App() {
       return true;
     });
 
+    function clearCompletedTasks() {
+      const activeTasks = tasks.filter((task) => !task.completed);
+      setTasks(activeTasks);
+    }
+
     return (
         <main className="app">
             <section className="task-card">
@@ -118,6 +123,12 @@ function App() {
                       Completed
                   </button>
                 </div>
+
+                {completedTasks > 0 && (
+                  <button className="clear-btn" onClick={clearCompletedTasks}>
+                  Clear Completed
+                  </button>
+                )}
 
                 <ul className="task-list">
                     {filteredTasks.length === 0 ? (
