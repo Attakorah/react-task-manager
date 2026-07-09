@@ -181,6 +181,29 @@ h1 {
     text-decoration: line-through;
 }
 
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.filter-buttons button {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 14px;
+    background: #020617;
+    color: var(--muted);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.filter-buttons button:hover,
+.filter-buttons .active-filter {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.12);
+}
+
 @media (max-width: 600px) {
     .task-item {
         flex-direction: column;

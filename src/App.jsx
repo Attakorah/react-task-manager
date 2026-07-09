@@ -13,6 +13,7 @@ function App() {
   });
 
   const [taskInput, setTaskInput] = useState("");
+  const [filter, setFilter] = useState("all");
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -56,6 +57,17 @@ function App() {
     }
 
     const completedTasks = tasks.filter((task) => task.completed).length;
+    const filteredTasks = tasks.filter((task) => {
+      if (filter === "active") {
+          return !task.completed;
+      }
+
+      if (filter === "completed") {
+          return task.completed;
+      }
+
+      return true;
+    });
 
     return (
         <main className="app">
@@ -84,13 +96,36 @@ function App() {
                     <span>Completed: {completedTasks}</span>
                 </div>
 
+                <div className="filter-buttons">
+                  <button
+                      className={filter === "all" ? "active-filter" : ""}
+                      onClick={() => setFilter("all")}
+                  >
+                      All
+                  </button>
+
+                  <button
+                      className={filter === "active" ? "active-filter" : ""}
+                      onClick={() => setFilter("active")}
+                  >
+                      Active
+                  </button>
+
+                  <button
+                      className={filter === "completed" ? "active-filter" : ""}
+                      onClick={() => setFilter("completed")}
+                  >
+                      Completed
+                  </button>
+                </div>
+
                 <ul className="task-list">
-                    {tasks.length === 0 ? (
+                    {filteredTasks.length === 0 ? (
                         <li className="empty-state">
                             No tasks yet. Add your first task above.
                         </li>
                     ) : (
-                        tasks.map((task) => (
+                        filteredTasks.map((task) => (
                             <li
                                 className={task.completed ? "task-item completed-task" : "task-item"}
                                 key={task.id}
